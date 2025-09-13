@@ -1,135 +1,245 @@
-# Turborepo starter
+# 🚀 Uptime Monitoring Service
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern, scalable uptime monitoring service built with Next.js and Turborepo. Monitor your websites, APIs, and services with real-time alerts and beautiful status pages.
 
-## Using this example
+## ✨ Features
+- 🔍 Multi-Protocol Monitoring - Support for HTTP/HTTPS, TCP, Ping, DNS, and more
+- 📊 Real-time Dashboard - Beautiful, responsive dashboard for monitoring all your services
+- 🔔 Instant Alerts - Get notified immediately when services go down via multiple channels
+- 📈 Performance Metrics - Track response times, uptime percentages, and historical data
+- 🎨 Customizable Status Pages - Public status pages for your users
+- 🚀 High Performance - Built with Turborepo for optimized builds and development
+- 🔒 Secure by Default - TypeScript for type safety and best security practices
+- 📱 Mobile Responsive - Works seamlessly on all devices
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+## 🏗️ Architecture
+This project is structured as a monorepo using Turborepo, containing:
 
 ### Apps and Packages
+- **apps/web** - Main Next.js application for the monitoring dashboard
+- **apps/docs** - Documentation site built with Next.js
+- **packages/ui** - Shared React component library
+- **packages/eslint-config** - Shared ESLint configurations
+- **packages/typescript-config** - Shared TypeScript configurations
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## 🚀 Quick Start
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Prerequisites
+- Node.js 18.x or higher
+- npm, yarn, or pnpm package manager
+- Git
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
+### Installation
+Clone the repository:
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+git clone https://github.com/vidhiagg2005/uptime.git
+cd uptime
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
+Install dependencies:
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+npm install
+# or
+yarn install
+# or
+pnpm install
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
+Set up environment variables:
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+cp .env.example .env.local
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+Edit `.env.local` with your configuration:
+```env
+DATABASE_URL=your_database_url
+NEXT_PUBLIC_API_URL=http://localhost:3000
+SECRET_KEY=your_secret_key
+# Add other required environment variables
 ```
 
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
+Run the development server:
 ```
-cd my-turborepo
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+The application will be available at:
+- Web app: http://localhost:3000
+- Documentation: http://localhost:3001
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+## 🛠️ Development
+
+### Available Scripts
+```
+# Development
+npm run dev          # Start all apps in development mode
+npm run dev:web      # Start only the web app
+npm run dev:docs     # Start only the docs app
+
+# Building
+npm run build        # Build all apps and packages
+npm run build:web    # Build only the web app
+npm run build:docs   # Build only the docs app
+
+# Testing
+npm run test         # Run all tests
+npm run test:watch   # Run tests in watch mode
+
+# Linting & Formatting
+npm run lint         # Lint all code
+npm run format       # Format all code with Prettier
+npm run type-check   # Run TypeScript type checking
+```
+
+### Using Filters
+You can use Turborepo filters to work with specific packages:
+```
+# Build a specific package
+turbo build --filter=web
+
+# Run development for a specific app
+turbo dev --filter=docs
+
+# Test a specific package
+turbo test --filter=@repo/ui
+```
+
+## 📦 Project Structure
+```
+uptime/
+├── apps/
+│   ├── web/                # Main monitoring dashboard
+│   │   ├── app/            # Next.js app directory
+│   │   ├── components/     # React components
+│   │   ├── lib/            # Utility functions
+│   │   └── public/         # Static assets
+│   └── docs/               # Documentation site
+├── packages/
+│   ├── ui/                 # Shared component library
+│   ├── eslint-config/      # ESLint configurations
+│   └── typescript-config/  # TypeScript configurations
+├── turbo.json              # Turborepo configuration
+├── package.json            # Root package.json
+└── README.md               # This file
+```
+
+## 🔧 Configuration
+
+### Monitor Configuration
+```javascript
+{
+  "name": "API Server",
+  "url": "https://api.example.com",
+  "type": "http",
+  "interval": 60,
+  "timeout": 30,
+  "alerts": {
+    "email": ["admin@example.com"],
+    "webhook": "https://hooks.slack.com/services/..."
+  }
+}
+```
+
+### Status Page Customization
+```javascript
+{
+  "title": "Service Status",
+  "description": "Current status of our services",
+  "theme": {
+    "primaryColor": "#0070f3",
+    "darkMode": true
+  },
+  "services": ["api", "website", "database"]
+}
+```
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+The easiest way to deploy this application is using Vercel.
+
+### Manual Deployment
+```
+npm run build
+export NODE_ENV=production
+export DATABASE_URL=your_production_database
+npm run start
+```
+
+### Docker Deployment
+```dockerfile
+# Build the Docker image
+docker build -t uptime-monitor .
+
+# Run the container
+docker run -p 3000:3000 --env-file .env.production uptime-monitor
+```
+
+## 🏎️ Performance
+Enable Turborepo remote caching for faster builds:
+```
 npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
 npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
 ```
 
-## Useful Links
+## 🧪 Testing
+```
+npm run test
+npm run test:coverage
+npm run test:watch
+npm run test:e2e
+```
 
-Learn more about the power of Turborepo:
+## 📊 Monitoring Features
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+### Supported Monitor Types
+- HTTP/HTTPS
+- TCP Port
+- Ping
+- DNS
+- Keyword
+- JSON Path
+- Certificate monitoring
+
+### Alert Channels
+- Email
+- SMS (via Twilio)
+- Slack
+- Discord
+- Custom webhooks
+- PagerDuty
+
+## 🤝 Contributing
+Contributions are welcome! Please fork the repo and open a PR.
+
+## 📝 API Documentation
+
+### REST API Endpoints
+```
+GET    /api/monitors
+POST   /api/monitors
+GET    /api/monitors/:id
+PUT    /api/monitors/:id
+DELETE /api/monitors/:id
+```
+
+### WebSocket Events
+```javascript
+const ws = new WebSocket('wss://your-domain.com/ws');
+ws.on('monitor:update', (data) => console.log(data));
+ws.on('alert:triggered', (data) => console.log(data));
+```
+
+## 🙏 Acknowledgments
+- Built with Next.js and Turborepo
+- UI components from shadcn/ui
+- Icons from Lucide
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/vidhiagg2005">Vidhi Aggarwal</a></p>
+<p align="center"><a href="https://github.com/vidhiagg2005/uptime/stargazers">⭐ Star us on GitHub</a></p>
